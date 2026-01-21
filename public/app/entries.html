@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Entries - Slice of Life</title>
+  <link rel="stylesheet" href="../styles/app.css">
+</head>
+<body>
+  <nav>
+    <a href="/app/dashboard.html">Dashboard</a>
+    <a href="/app/log.html">New Entry</a>
+    <a href="/app/entries.html">All Entries</a>
+    <button id="theme-toggle" aria-label="Toggle theme">☀</button>
+    <button id="sign-out">Sign Out</button>
+  </nav>
+  
+  <main>
+    <h1>All Entries</h1>
+    
+    <div id="entries-list">Loading...</div>
+  </main>
+  
+  <script type="module">
+    import { pb } from '../scripts/pb.js';
+    import { requireAuth, signOut } from '../scripts/auth.js';
+    import { initTheme, toggleTheme } from '../scripts/theme.js';
+    
+    // Initialize theme
+    initTheme();
+    
+    const user = await requireAuth();
+    document.getElementById('sign-out').addEventListener('click', signOut);
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    
+    // Load all entries
+    const entries = await pb.collection('entries').getList(1, 50, {
+      sort: '-date',
+      filter: `user = "${user.id}"`
+    });
+    
+    document.getElementById('entries-list').innerHTML = entries.items
+      .map(e => `
+        <div class="entry">
+          <h3>${e.date}</h3>
+          <p>${e.content}</p>
+        </div>
+      `)
+      .join('') || '<p>No entries yet.</p>';
+  </script>
+</body>
+</html>

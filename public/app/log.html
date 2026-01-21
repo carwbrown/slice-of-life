@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Entry - Slice of Life</title>
+  <link rel="stylesheet" href="../styles/app.css">
+</head>
+<body>
+  <nav>
+    <a href="/app/dashboard.html">Dashboard</a>
+    <a href="/app/log.html">New Entry</a>
+    <a href="/app/entries.html">All Entries</a>
+    <button id="theme-toggle" aria-label="Toggle theme">☀</button>
+    <button id="sign-out">Sign Out</button>
+  </nav>
+  
+  <main>
+    <h1>New Entry</h1>
+    
+    <form id="entry-form">
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" required />
+      
+      <label for="content">Content (Markdown supported)</label>
+      <textarea id="content" name="content" required placeholder="Write your entry here..."></textarea>
+      
+      <button type="submit">Save Entry</button>
+    </form>
+    
+    <div id="result"></div>
+  </main>
+  
+  <script type="module">
+    import { pb } from '../scripts/pb.js';
+    import { requireAuth, signOut } from '../scripts/auth.js';
+    import { initTheme, toggleTheme } from '../scripts/theme.js';
+    
+    // Initialize theme
+    initTheme();
+    
+    const user = await requireAuth();
+    document.getElementById('sign-out').addEventListener('click', signOut);
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    
+    // Set today's date
+    document.getElementById('date').valueAsDate = new Date();
+    
+    // Handle form submission
+    document.getElementById('entry-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      
+      try {
+        await pb.collection('entries').create({
+          user: user.id,
+          date: formData.get('date'),
+          content: formData.get('content')
+        });
+        
+        document.getElementById('result').innerHTML = 
+          '<p style="color: green;">Entry saved! <a href="/app/entries.html">View all entries</a></p>';
+        e.target.reset();
+        document.getElementById('date').valueAsDate = new Date();
+      } catch (err) {
+        document.getElementById('result').innerHTML = 
+          '<p style="color: red;">Failed to save: ' + err.message + '</p>';
+      }
+    });
+  </script>
+</body>
+</html>

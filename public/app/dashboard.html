@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Slice of Life</title>
+  <link rel="stylesheet" href="../styles/app.css">
+</head>
+<body>
+  <nav>
+    <a href="/app/dashboard.html">Dashboard</a>
+    <a href="/app/log.html">New Entry</a>
+    <a href="/app/entries.html">All Entries</a>
+    <button id="theme-toggle" aria-label="Toggle theme">☀</button>
+    <button id="sign-out">Sign Out</button>
+  </nav>
+  
+  <main>
+    <h1>Welcome back, <span id="user-name"></span>!</h1>
+    
+    <section>
+      <h2>Recent Entries</h2>
+      <div id="recent-entries">Loading...</div>
+    </section>
+  </main>
+  
+  <script type="module">
+    import { pb } from '../scripts/pb.js';
+    import { requireAuth, signOut } from '../scripts/auth.js';
+    import { initTheme, toggleTheme } from '../scripts/theme.js';
+    
+    // Initialize theme
+    initTheme();
+    
+    // Check auth
+    const user = await requireAuth();
+    document.getElementById('user-name').textContent = user.email;
+    
+    // Sign out
+    document.getElementById('sign-out').addEventListener('click', signOut);
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    
+    // Load recent entries
+    const entries = await pb.collection('entries').getList(1, 5, {
+      sort: '-date',
+      filter: `user = "${user.id}"`
+    });
+    
+    document.getElementById('recent-entries').innerHTML = entries.items
+      .map(e => `
+        <div class="entry">
+          <h3>${e.date}</h3>
+          <p>${e.content.substring(0, 100)}...</p>
+        </div>
+      `)
+      .join('') || '<p>No entries yet. <a href="/app/log.html">Create your first entry!</a></p>';
+  </script>
+</body>
+</html>

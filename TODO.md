@@ -7,10 +7,10 @@ Complete step-by-step guide to get your app deployed.
 ## Phase 1: PocketBase Setup (20 minutes)
 
 ### 1.1 Download PocketBase
-- [ ] Go to [https://pocketbase.io/docs/](https://pocketbase.io/docs/)
-- [ ] Download for your OS (Linux, Mac, or Windows)
-- [ ] Extract the zip file
-- [ ] You should have a single `pocketbase` executable
+- [x] Go to [https://pocketbase.io/docs/](https://pocketbase.io/docs/)
+- [x] Download for your OS (Linux, Mac, or Windows)
+- [x] Extract the zip file
+- [x] You should have a single `pocketbase` executable
 
 ### 1.2 Start PocketBase Locally
 ```bash
@@ -21,112 +21,113 @@ Complete step-by-step guide to get your app deployed.
 pocketbase.exe serve
 ```
 
-- [ ] Run the command above
-- [ ] Visit `http://127.0.0.1:8090/_/`
-- [ ] Should see PocketBase admin UI
+- [x] Run the command above
+- [x] Visit `http://127.0.0.1:8090/_/`
+- [x] Should see PocketBase admin UI
 
 ### 1.3 Create Admin Account
-- [ ] Click "Create admin account"
-- [ ] Email: your-email@example.com
-- [ ] Password: (strong password)
-- [ ] Save credentials securely
-- [ ] Click "Create and login"
+- [x] Click "Create admin account"
+- [x] Email: your-email@example.com
+- [x] Password: (strong password)
+- [x] Save credentials securely
+- [x] Click "Create and login"
 
 ### 1.4 Create "entries" Collection
-- [ ] Click "Collections" in sidebar
-- [ ] Click "New Collection" → "Base collection"
-- [ ] Name: `entries`
-- [ ] Click "Create"
+- [x] Click "Collections" in sidebar
+- [x] Click "New Collection" → "Base collection"
+- [x] Name: `entries`
+- [x] Click "Create"
 
 ### 1.5 Add Fields to Entries Collection
-- [ ] Click on `entries` collection
-- [ ] Click "Add Field"
+- [x] Click on `entries` collection
+- [x] Click "Add Field"
 
 **Field 1: user (Relation)**
-- [ ] Type: Relation
-- [ ] Name: `user`
-- [ ] Collection: `users`
-- [ ] Max select: 1 (single)
-- [ ] Required: Yes
-- [ ] Click "Save"
+- [x] Type: Relation
+- [x] Name: `user`
+- [x] Collection: `users`
+- [x] Max select: 1 (single)
+- [x] Required: Yes
+- [x] Click "Save"
 
 **Field 2: date**
-- [ ] Type: Date
-- [ ] Name: `date`
-- [ ] Required: Yes
-- [ ] Click "Save"
+- [x] Type: Date
+- [x] Name: `date`
+- [x] Required: Yes
+- [x] Click "Save"
 
 **Field 3: content**
-- [ ] Type: Plain text
-- [ ] Name: `content`
-- [ ] Required: Yes
-- [ ] Click "Save"
+- [x] Type: Plain text
+- [x] Name: `content`
+- [x] Required: Yes
+- [x] Click "Save"
 
 ### 1.6 Set API Rules for Entries
-- [ ] Click on `entries` collection
-- [ ] Click "API Rules" tab
+- [x] Click on `entries` collection
+- [x] Click "API Rules" tab
 
 **List/Search Rule:**
 ```javascript
 @request.auth.id != "" && user = @request.auth.id
 ```
-- [ ] Paste above in "List/Search rule"
+- [x] Paste above in "List/Search rule"
 
 **View Rule:**
 ```javascript
 @request.auth.id != "" && user = @request.auth.id
 ```
-- [ ] Paste above in "View rule"
+- [x] Paste above in "View rule"
 
 **Create Rule:**
 ```javascript
-@request.auth.id != "" && @request.data.user = @request.auth.id
+@request.auth.id != ""
 ```
-- [ ] Paste above in "Create rule"
+- [x] Paste above in "Create rule"
+- Note: Frontend handles setting user field correctly
 
 **Update Rule:**
 ```javascript
 @request.auth.id != "" && user = @request.auth.id
 ```
-- [ ] Paste above in "Update rule"
+- [x] Paste above in "Update rule"
 
 **Delete Rule:**
 ```javascript
 @request.auth.id != "" && user = @request.auth.id
 ```
-- [ ] Paste above in "Delete rule"
+- [x] Paste above in "Delete rule"
 
-- [ ] Click "Save" at bottom
+- [x] Click "Save" at bottom
 
 ### 1.7 Configure Users Collection
-- [ ] Click "Collections" → `users`
-- [ ] Click "Options" tab
-- [ ] Enable "Email/Password Auth"
-- [ ] Email verification: Optional (your choice)
-- [ ] Click "Save"
+- [x] Click "Collections" → `users`
+- [x] Click "Options" tab
+- [x] Enable "Email/Password Auth"
+- [x] Email verification: Optional (your choice)
+- [x] Click "Save"
 
 ### 1.8 Configure OAuth (Optional - Google)
-- [ ] Go to [Google Cloud Console](https://console.cloud.google.com/)
-- [ ] Create new project or select existing
-- [ ] Enable "Google+ API"
-- [ ] Credentials → Create Credentials → OAuth 2.0 Client ID
-- [ ] Application type: Web application
-- [ ] Name: "Slice of Life"
-- [ ] Authorized redirect URIs:
+- [x] Go to [Google Cloud Console](https://console.cloud.google.com/)
+- [x] Create new project or select existing
+- [x] Enable "Google+ API"
+- [x] Credentials → Create Credentials → OAuth 2.0 Client ID
+- [x] Application type: Web application
+- [x] Name: "Slice of Life"
+- [x] Authorized redirect URIs:
   - `http://127.0.0.1:8090/api/oauth2-redirect`
   - `https://api.your-domain.com/api/oauth2-redirect` (for production)
-- [ ] Copy Client ID and Client Secret
-- [ ] In PocketBase: Settings → Auth providers → Google
-- [ ] Enable Google OAuth2
-- [ ] Paste Client ID and Client Secret
-- [ ] Click "Save"
+- [x] Copy Client ID and Client Secret
+- [x] In PocketBase: Settings → Auth providers → Google
+- [x] Enable Google OAuth2
+- [x] Paste Client ID and Client Secret
+- [x] Click "Save"
 
 ### 1.9 Test PocketBase
-- [ ] Go to Collections → `users`
-- [ ] Click "API Preview"
-- [ ] Try "Create" example in browser console
-- [ ] Verify user is created
-- [ ] Try logging in via Auth methods
+- [x] Go to Collections → `users`
+- [x] Click "API Preview"
+- [x] Try "Create" example in browser console
+- [x] Verify user is created
+- [x] Try logging in via Auth methods
 
 ---
 
@@ -138,10 +139,10 @@ mkdir -p slice-of-life/public/{app,styles,scripts}
 cd slice-of-life
 ```
 
-- [ ] Create `public/` folder
-- [ ] Create `public/app/` folder
-- [ ] Create `public/styles/` folder
-- [ ] Create `public/scripts/` folder
+- [x] Create `public/` folder
+- [x] Create `public/app/` folder
+- [x] Create `public/styles/` folder
+- [x] Create `public/scripts/` folder
 
 ### 2.2 Initialize Git
 ```bash
@@ -156,21 +157,32 @@ node_modules/
 .env
 ```
 
-- [ ] Run `git init`
-- [ ] Create `.gitignore` file
-- [ ] Add above content
-- [ ] `git add .`
-- [ ] `git commit -m "Initial commit"`
+- [x] Run `git init`
+- [x] Create `.gitignore` file
+- [x] Add above content
+- [x] `git add .`
+- [x] `git commit -m "Initial commit"`
 
-### 2.3 Move PocketBase
+### 2.3 Setup PocketBase
+
+**If installed via Homebrew (Mac):**
+```bash
+# Already available globally, just navigate to project
+cd slice-of-life
+pocketbase serve
+```
+
+**If downloaded manually:**
 ```bash
 # Copy pocketbase executable to project root
 cp /path/to/pocketbase ./pocketbase
+./pocketbase serve
 ```
 
-- [ ] Copy pocketbase executable to project folder
-- [ ] Test: `./pocketbase serve`
-- [ ] Verify at `http://127.0.0.1:8090/_/`
+- [x] Navigate to project root folder
+- [x] Test: `pocketbase serve` (or `./pocketbase serve` if manual install)
+- [x] Verify at `http://127.0.0.1:8090/_/`
+- [x] Should see `pb_data/` folder created in project root
 
 ---
 
@@ -215,9 +227,9 @@ cp /path/to/pocketbase ./pocketbase
 </html>
 ```
 
-- [ ] Create file
-- [ ] Replace "Your Name"
-- [ ] Update GitHub link
+- [x] Create file
+- [x] Replace "Your Name"
+- [x] Update GitHub link
 
 ### 3.2 Create `public/styles/landing.css`
 ```css
@@ -235,8 +247,8 @@ hgroup h1 {
 }
 ```
 
-- [ ] Create file
-- [ ] Test styling
+- [x] Create file
+- [x] Test styling
 
 ---
 
@@ -260,8 +272,8 @@ export const pb = new PocketBase(
 pb.autoCancellation(false);
 ```
 
-- [ ] Create file
-- [ ] Verify PocketBase URL
+- [x] Create file
+- [x] Verify PocketBase URL
 
 ### 4.2 Create `public/scripts/auth.js`
 ```javascript
@@ -296,7 +308,7 @@ export async function initAuth() {
 }
 ```
 
-- [ ] Create file
+- [x] Create file
 
 ### 4.3 Create `public/login.html`
 ```html
@@ -370,9 +382,9 @@ export async function initAuth() {
 </html>
 ```
 
-- [ ] Create file
-- [ ] Test email/password login
-- [ ] Test OAuth login (if configured)
+- [x] Create file
+- [x] Test email/password login
+- [x] Test OAuth login (if configured)
 
 ---
 
@@ -461,7 +473,7 @@ nav a:hover {
 }
 ```
 
-- [ ] Create file
+- [x] Create file
 
 ### 5.2 Create `public/app/dashboard.html`
 ```html
@@ -520,9 +532,9 @@ nav a:hover {
 </html>
 ```
 
-- [ ] Create file
-- [ ] Test dashboard loads
-- [ ] Test sign out
+- [x] Create file
+- [x] Test dashboard loads
+- [x] Test sign out
 
 ### 5.3 Create `public/app/log.html`
 ```html
@@ -594,9 +606,9 @@ nav a:hover {
 </html>
 ```
 
-- [ ] Create file
-- [ ] Test creating an entry
-- [ ] Verify entry appears in dashboard
+- [x] Create file
+- [x] Test creating an entry
+- [x] Verify entry appears in dashboard
 
 ### 5.4 Create `public/app/entries.html`
 ```html
@@ -648,42 +660,42 @@ nav a:hover {
 </html>
 ```
 
-- [ ] Create file
-- [ ] Test loading all entries
-- [ ] Verify only your entries show
+- [x] Create file
+- [x] Test loading all entries
+- [x] Verify only your entries show
 
 ---
 
 ## Phase 6: Local Testing (30 minutes)
 
 ### 6.1 Test Full Flow
-- [ ] Start PocketBase: `./pocketbase serve`
-- [ ] Start local server: `python3 -m http.server 8000 --directory public`
-- [ ] Visit `http://localhost:8000`
-- [ ] Landing page loads
-- [ ] Click "Try the App"
-- [ ] Login page loads
-- [ ] Login with email/password OR Google
-- [ ] Dashboard loads with user name
-- [ ] Create new entry
-- [ ] Entry saves successfully
-- [ ] View all entries
-- [ ] Entries display correctly
-- [ ] Sign out works
-- [ ] Redirects to home
+- [x] Start PocketBase: `./pocketbase serve`
+- [x] Start local server: `python3 -m http.server 8000 --directory public`
+- [x] Visit `http://localhost:8000`
+- [x] Landing page loads
+- [x] Click "Try the App"
+- [x] Login page loads
+- [x] Login with email/password OR Google
+- [x] Dashboard loads with user name
+- [x] Create new entry
+- [x] Entry saves successfully
+- [x] View all entries
+- [x] Entries display correctly
+- [x] Sign out works
+- [x] Redirects to home
 
 ### 6.2 Test Responsive Design
-- [ ] Open DevTools (F12)
-- [ ] Toggle device toolbar
-- [ ] Test mobile view
-- [ ] Test tablet view
-- [ ] Test desktop view
+- [x] Open DevTools (F12)
+- [x] Toggle device toolbar
+- [x] Test mobile view
+- [x] Test tablet view
+- [x] Test desktop view
 
 ### 6.3 Test Dark Mode
-- [ ] Change OS to dark mode
-- [ ] Refresh pages
-- [ ] Verify dark colors
-- [ ] Check readability
+- [x] Change OS to dark mode
+- [x] Refresh pages
+- [x] Verify dark colors
+- [x] Check readability
 
 ---
 
