@@ -312,13 +312,13 @@ section {
 
 .experience-item {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 3rem;
+  grid-template-columns: 140px 1fr;
+  gap: 2rem;
   position: relative;
 }
 
 .experience-timeline {
-  text-align: right;
+  text-align: left;
   position: relative;
   padding-right: 3rem;
 }
