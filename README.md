@@ -1,165 +1,66 @@
 # Slice of Life
 
-A minimalist daily activity logging app built with vanilla web technologies. No frameworks, no build tools—just HTML, HTMX, and CSS.
+A minimalist daily journaling app with a portfolio landing page.
 
-## Overview
-
-**Slice of Life** is a personal journaling app for logging daily activities with a beautiful portfolio landing page and a clean, functional journaling interface.
+**Live:** [carwbrown.com](https://carwbrown.com)
 
 ## Tech Stack
 
-### Frontend
-- **Landing Page**: Pico CSS (semantic HTML styling)
-- **App Pages**: Vanilla CSS (minimal, custom styles)
-- **Interactivity**: HTMX (declarative HTTP requests)
-- **Markdown Rendering**: Marked.js
-
-### Backend
-- **Database**: PocketBase (SQLite with built-in REST API)
-- **Authentication**: PocketBase Auth (Email/Password + OAuth)
-- **API**: PocketBase REST API (automatic from schema)
-- **Admin UI**: Built-in PocketBase dashboard
-- **Deployment**: Single binary file
-
-### Hosting
-- **Domain**: Namecheap (your-domain.com)
-- **Backend**: VPS (Hetzner, DigitalOcean, etc.) running PocketBase
-- **Frontend**: Same server or Cloudflare Pages
-
-## Project Structure
-
-```
-slice-of-life/
-├── public/                      # Frontend (deployable files)
-│   ├── index.html              # Landing page (Pico CSS)
-│   ├── login.html              # Login page
-│   │
-│   ├── app/                    # Journal application
-│   │   ├── dashboard.html     # Main dashboard
-│   │   ├── log.html           # Create new entry
-│   │   ├── entries.html       # View all entries
-│   │   └── entry.html         # Single entry view/edit
-│   │
-│   ├── styles/
-│   │   ├── landing.css        # Landing page customizations
-│   │   └── app.css            # App styles (vanilla CSS)
-│   │
-│   └── scripts/
-│       ├── pb.js              # PocketBase client setup
-│       └── auth.js            # Auth helpers
-│
-├── pocketbase/                  # Backend (single binary)
-│   ├── pocketbase              # The executable
-│   └── pb_data/                # Database & files (auto-created)
-│       ├── data.db             # SQLite database
-│       ├── logs.db             # Logs
-│       └── storage/            # Uploaded files
-│
-├── docs/
-│   ├── HTMX_VS_REACT.md       # HTMX vs React comparison
-│   ├── DEPLOYMENT.md          # Deployment guide
-│   └── POCKETBASE_SETUP.md    # PocketBase configuration
-│
-├── .gitignore
-├── README.md
-└── TODO.md                     # Step-by-step setup checklist
-```
-
-
-## Key Features
-
-- ✅ **No API keys to manage** - Token-based auth
-- ✅ **Automatic security** - Collection rules protect data
-- ✅ **Single binary deployment** - No Docker complexity
-- ✅ **Built-in Admin UI** - Manage data visually
-- ✅ **Real-time subscriptions** - Live updates (optional)
-- ✅ **File uploads** - Store avatars, attachments
-- ✅ **OAuth providers** - Google, GitHub, etc.
-- ✅ **Email auth** - Password resets, verification
-- ✅ **Zero vendor lock-in** - Self-hosted forever
-
-## Browser Support
-
-All modern browsers (95%+ coverage):
-- ✅ Chrome/Edge
-- ✅ Firefox
-- ✅ Safari 15+
-- ✅ Mobile browsers
+- **Frontend:** Vanilla HTML + CSS + JavaScript
+- **Styling:** Pico CSS (landing) + custom CSS (app)
+- **Backend:** PocketBase (SQLite with REST API)
+- **Hosting:** Netlify (frontend) + GCP (backend)
 
 ## Local Development
 
+### Prerequisites
+- [PocketBase](https://pocketbase.io/docs/) (`brew install pocketbase` on Mac)
+
 ### Quick Start
 
-**1. Install PocketBase via Homebrew (Mac)**
 ```bash
-brew install pocketbase
-```
-
-**2. Start PocketBase (Terminal 1)**
-```bash
-cd slice-of-life
+# 1. Start PocketBase (Terminal 1)
 pocketbase serve
-```
-Visit `http://127.0.0.1:8090/_/` to access PocketBase admin UI.
+# Admin UI: http://127.0.0.1:8090/_/
 
-**3. Start Local Web Server (Terminal 2)**
-```bash
-cd slice-of-life
+# 2. Serve frontend (Terminal 2)
 python3 -m http.server 8000 --directory public
+
+# 3. Open http://localhost:8000
 ```
 
-**4. Open the App**
-Visit `http://localhost:8000` in your browser.
+### First Time PocketBase Setup
 
-### First Time Setup
-
-1. Create admin account in PocketBase at `http://127.0.0.1:8090/_/`
-2. Create `entries` collection with fields:
-   - `user` (relation to users, single, required)
+1. Open Admin UI at `http://127.0.0.1:8090/_/`
+2. Create admin account
+3. Create `entries` collection:
+   - `user` (relation to users, required)
    - `date` (date, required)
    - `content` (plain text, required)
-3. Set API rules (see [TODO.md](./TODO.md) for details)
-4. Enable Email/Password auth in users collection
+4. Set API rules for user-owned data
+5. Enable Email/Password auth in users collection
 
-## Troubleshooting
+## File Structure
 
-### "Failed to authenticate"
-- Check if token is valid: `pb.authStore.isValid`
-- Try refreshing token: `pb.collection('users').authRefresh()`
-- Check CORS settings in PocketBase
+```
+slice-of-life/
+├── public/
+│   ├── index.html          # Landing page (portfolio)
+│   ├── login.html          # Login page
+│   ├── app/
+│   │   ├── dashboard.html  # Main dashboard
+│   │   ├── log.html        # Create entry
+│   │   └── entries.html    # View all entries
+│   ├── styles/
+│   │   ├── landing.css
+│   │   └── app.css
+│   └── scripts/
+│       ├── pb.js           # PocketBase client
+│       └── auth.js         # Auth helpers
+└── pb_data/                # PocketBase data (gitignored)
+```
 
-### "403 Forbidden"
-- Check collection API rules
-- Verify user is authenticated
-- Check if user owns the resource
+## Deployment
 
-### Entries not loading
-- Open browser console
-- Check PocketBase is running
-- Verify collection name matches
-- Check filter syntax
-
-## Resources
-
-- [PocketBase Documentation](https://pocketbase.io/docs/)
-- [PocketBase JavaScript SDK](https://github.com/pocketbase/js-sdk)
-- [HTMX Documentation](https://htmx.org/docs/)
-- [Pico CSS Docs](https://picocss.com/docs)
-- [Plain Vanilla Web](https://plainvanillaweb.com/)
-
-## Contributing
-
-Personal project, but feel free to:
-- Fork for your own use
-- Submit issues
-- Share improvements
-
-## License
-
-MIT License - Use however you want
-
----
-
-## Next Steps
-
-See [TODO.md](./TODO.md) for step-by-step setup checklist.
+- **Frontend:** Netlify (auto-deploy from GitHub)
+- **Backend:** See [docs/GCP_DEPLOYMENT.md](docs/GCP_DEPLOYMENT.md)
