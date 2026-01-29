@@ -3,13 +3,21 @@
 
 set -e
 
+VM_NAME="pocketbase-vm"
+ZONE="us-central1-a"
+PROJECT="slice-of-life"
+
+echo "Setting GCP project to ${PROJECT}..."
+gcloud config set project ${PROJECT}
+
 echo "Deploying migrations to GCP..."
 
 # Copy migrations to VM
-gcloud compute scp --recurse ./pb_migrations pocketbase-vm:/tmp/ --zone=us-central1-a
+gcloud compute scp --recurse ./pb_migrations ${VM_NAME}:/tmp/ \
+  --zone=${ZONE}
 
 # Move migrations and restart PocketBase
-gcloud compute ssh pocketbase-vm --zone=us-central1-a --command="
+gcloud compute ssh ${VM_NAME} --zone=${ZONE} --command="
   sudo rm -rf /opt/pocketbase/pb_migrations
   sudo mv /tmp/pb_migrations /opt/pocketbase/
   sudo chown -R root:root /opt/pocketbase/pb_migrations

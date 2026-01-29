@@ -7,7 +7,7 @@ const isDev = window.location.hostname === 'localhost' ||
 export const pb = new PocketBase(
   isDev 
     ? 'http://127.0.0.1:8090' 
-    : 'https://34.63.118.19:8090' // Change in production
+    : 'http://34.63.118.19:8090' // Change in production
 );
 
 // Disable auto-cancellation
