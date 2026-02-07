@@ -44,13 +44,13 @@
 - [x] Create GCP deployment guide
 - [x] Create CLAUDE.md with project guidelines
 
-## Remaining
-
 ### Server Deployment
-- [ ] Create Google Cloud VM (or Cloud Run)
-- [ ] Install PocketBase on server
-- [ ] Create systemd service
-- [ ] Transfer database (optional)
+- [x] Create Google Cloud VM
+- [x] Install PocketBase on server
+- [x] Create systemd service
+- [x] Update `public/scripts/pb.js` with production URL
+
+## Remaining
 
 ### Domain Configuration
 - [ ] Configure DNS (A records for domain and api subdomain)
@@ -58,7 +58,6 @@
 - [ ] Install SSL certificates (certbot)
 
 ### Production Configuration
-- [ ] Update `public/scripts/pb.js` with production URL
 - [ ] Update OAuth redirect URLs
 - [ ] Configure PocketBase settings
 
