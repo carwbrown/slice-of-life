@@ -7,6 +7,8 @@
  *   card.entry = { date: '2024-01-15', content: 'Today was a good day...' };
  */
 
+import { escapeHTML } from '../scripts/security.js';
+
 class EntryCard extends HTMLElement {
   constructor() {
     super();
@@ -69,7 +71,7 @@ class EntryCard extends HTMLElement {
 
       <article class="entry">
         <h3>${e.date || ''}</h3>
-        <p>${e.content || ''}</p>
+        <p>${escapeHTML(e.content || '')}</p>
       </article>
     `;
   }
