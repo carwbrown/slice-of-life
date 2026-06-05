@@ -14,14 +14,25 @@ const PROJECTS_DATA = [
     featured: true
   },
   {
-    id: 'math-facts',
-    title: 'Math Facts Practice',
-    description: 'An educational web application designed to make learning multiplication tables engaging and fun for kids. Built with Next.js and TypeScript, featuring customizable difficulty levels, real-time progress tracking, and smooth animations. Includes timed challenges, achievement badges, and adaptive difficulty that grows with the student. Deployed on Netlify with continuous integration.',
-    technologies: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Netlify'],
-    githubUrl: 'https://github.com/carwbrown/multi-ply',
-    liveUrl: 'https://multi-ply.netlify.app/',
-    year: 2025,
-    category: 'Side Project',
+    id: 'revelxp',
+    title: 'RevelXP',
+    description: 'Managing and maintaining a headless Next.js application for a live events and experiences platform. Integrates with Sanity CMS for content management, Vivenu for ticketing, and Shopify for e-commerce.',
+    technologies: ['Next.js', 'TypeScript', 'Sanity', 'Vivenu', 'Shopify'],
+    githubUrl: null,
+    liveUrl: 'https://www.revelxp.com',
+    year: 2026,
+    category: 'Client Project',
+    featured: true
+  },
+  {
+    id: 'epic-hire',
+    title: 'Epic Hire',
+    description: 'Built the entire web presence for Epic Hire from scratch, including the main application (app.epichire.com) and marketing site. Architected and facilitated a MongoDB to PostgreSQL database migration, improving stability and reducing bugs. Delivered real-time messaging, event management with QR check-in, and announcement features for student organizations.',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Java', 'PostgreSQL', 'MongoDB', 'GraphQL', 'WordPress'],
+    githubUrl: null,
+    liveUrl: 'https://epichire.com',
+    year: 2024,
+    category: 'Client Project',
     featured: true
   },
   {
@@ -33,6 +44,28 @@ const PROJECTS_DATA = [
     liveUrl: 'https://calltime.io',
     year: 2021,
     category: 'SaaS Application',
+    featured: true
+  },
+  {
+    id: 'math-facts',
+    title: 'Math Facts Practice',
+    description: 'An educational web application designed to make learning multiplication tables engaging and fun for kids. Built with Next.js and TypeScript, featuring customizable difficulty levels, real-time progress tracking, and smooth animations. Includes timed challenges, achievement badges, and adaptive difficulty that grows with the student. Deployed on Netlify with continuous integration.',
+    technologies: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Netlify'],
+    githubUrl: 'https://github.com/carwbrown/multi-ply',
+    liveUrl: 'https://multi-ply.netlify.app/',
+    year: 2025,
+    category: 'Side Project',
+    featured: false
+  },
+  {
+    id: 'two-five-fifteen',
+    title: '2·5·15 Workout',
+    description: 'A personal workout planner built around the 2-5-15 training method — 2 sessions per week, 5 sets per muscle, 15 total sets per session. Single-file vanilla HTML app with two full programs (2-5-15 and SSC circuit training), exercise cards with animated GIFs, muscle coverage breakdowns, a swap library, and a mobility flow. Dark-themed with a shrinking sticky header.',
+    technologies: ['HTML/CSS', 'JavaScript', 'GitHub Pages'],
+    githubUrl: 'https://github.com/carwbrown/two-five-fifteen',
+    liveUrl: 'https://carwbrown.github.io/two-five-fifteen/',
+    year: 2026,
+    category: 'Side Project',
     featured: true
   },
   {
@@ -139,6 +172,8 @@ const PROJECTS_DATA = [
 // Utility functions for filtering projects
 const getProjectById = (id) => PROJECTS_DATA.find(p => p.id === id);
 const getFeaturedProjects = () => PROJECTS_DATA.filter(p => p.featured);
+const getPersonalProjects = () => PROJECTS_DATA.filter(p => p.featured && p.category !== 'Client Project');
+const getContractProjects = () => PROJECTS_DATA.filter(p => p.category === 'Client Project');
 const getProjectsByYear = (year) => PROJECTS_DATA.filter(p => p.year === year);
 const getProjectsByCategory = (category) => PROJECTS_DATA.filter(p => p.category === category);
 const getAllProjects = () => [...PROJECTS_DATA].sort((a, b) => b.year - a.year);

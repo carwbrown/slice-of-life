@@ -25,10 +25,10 @@ function createProjectHTML(project) {
   return `
     <article class="project ${featuredClass}">
       <div class="project-content">
-        <p class="project-overline">${project.category}</p>
         <h3 class="project-title">
           <a href="${titleLink}" ${titleLink.startsWith('http') ? 'target="_blank"' : ''}>${project.title}</a>
         </h3>
+        <p class="project-overline">${project.category}</p>
         <div class="project-description">
           ${project.description}
         </div>
@@ -90,10 +90,14 @@ function createArchiveProjectHTML(project) {
 
 // Render projects on page load
 document.addEventListener('DOMContentLoaded', () => {
+  const contractList = document.querySelector('.contract-list');
+  if (contractList) {
+    contractList.innerHTML = getContractProjects().map(createProjectHTML).join('');
+  }
+
   const projectList = document.querySelector('.project-list');
   if (projectList) {
-    const featuredProjects = getFeaturedProjects();
-    projectList.innerHTML = featuredProjects.map(createProjectHTML).join('');
+    projectList.innerHTML = getPersonalProjects().map(createProjectHTML).join('');
   }
 
   const archiveTableBody = document.querySelector('.projects-table tbody');

@@ -3,11 +3,28 @@
 
 const EXPERIENCE_DATA = [
   {
+    id: 'fringe-2',
+    company: 'Fringe',
+    position: 'Senior Software Engineer',
+    startDate: 'Nov 2025',
+    endDate: 'Present',
+    description: [
+      'Leading backend rewrite project, migrating platform from Scala and Salesforce to Go',
+      'Requirements gathering across all existing systems to map and preserve functionality in the new architecture',
+      'Replacing Salesforce with an in-house solution to consolidate business logic and eliminate third-party dependency',
+      'Designing and building a ledger system to manage money movement across the platform',
+      'Project goal: significantly reduce infrastructure cost and Salesforce reliance'
+    ],
+    technologies: ['Go', 'Scala', 'Salesforce', 'Backend Development'],
+    companyUrl: 'https://fringe.us',
+    current: true
+  },
+  {
     id: 'shop-monkey',
     company: 'Shopmonkey',
     position: 'Software Engineer',
     startDate: 'May 2025',
-    endDate: 'Present',
+    endDate: 'Nov 2025',
     description: [
       'Working on the payment processing team, building secure payment infrastructure',
       'Processing transactions for thousands of mechanic shops across the platform',
@@ -15,7 +32,7 @@ const EXPERIENCE_DATA = [
     ],
     technologies: ['TypeScript', 'Next.js', 'Payment Processing', 'AWS'],
     companyUrl: 'https://www.shopmonkey.io/',
-    current: true
+    current: false
   },
   {
     id: 'epic-hire',
@@ -46,7 +63,7 @@ const EXPERIENCE_DATA = [
       'Improved user onboarding and checkout flows, increasing purchase likelihood through better user data capture'
     ],
     technologies: ['TypeScript', 'React', 'Scala', 'Redis', 'Full-Stack Development'],
-    companyUrl: 'https://www.getfringe.com/',
+    companyUrl: 'https://fringe.us',
     current: false
   },
   {

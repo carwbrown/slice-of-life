@@ -8,26 +8,28 @@
 </head>
 <body>
   <!-- Navigation -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <a href="app/dashboard.html" class="lemon-link" aria-label="Login" title="Login to Slice of Life">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 100 60" fill="none">
-        <!-- Outer rind -->
-        <path d="M 10,55 Q 10,10 50,5 Q 90,10 90,55 Z" fill="#E8D852" stroke="#D4C74A" stroke-width="3"/>
-        <!-- Inner pulp -->
-        <path d="M 18,52 Q 18,18 50,14 Q 82,18 82,52 Z" fill="#F4E87C" stroke="none"/>
-        <!-- Center line -->
-        <line x1="50" y1="5" x2="50" y2="55" stroke="#E8D852" stroke-width="2"/>
-        <!-- Wedge lines -->
-        <line x1="50" y1="10" x2="25" y2="52" stroke="#E8D852" stroke-width="1.5" opacity="0.8"/>
-        <line x1="50" y1="10" x2="35" y2="54" stroke="#E8D852" stroke-width="1.5" opacity="0.8"/>
-        <line x1="50" y1="10" x2="65" y2="54" stroke="#E8D852" stroke-width="1.5" opacity="0.8"/>
-        <line x1="50" y1="10" x2="75" y2="52" stroke="#E8D852" stroke-width="1.5" opacity="0.8"/>
-      </svg>
-    </a>
+  <nav id="main-nav">
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#contract-work">Contract Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="app/dashboard.html" class="lemon-link" aria-label="Login" title="Login to Slice of Life">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 100 60" fill="none">
+          <path d="M 10,55 Q 10,10 50,5 Q 90,10 90,55 Z" fill="#E8D852" stroke="#D4C74A" stroke-width="3"/>
+          <path d="M 18,52 Q 18,18 50,14 Q 82,18 82,52 Z" fill="#F4E87C" stroke="none"/>
+          <line x1="50" y1="5" x2="50" y2="55" stroke="#E8D852" stroke-width="2"/>
+          <line x1="50" y1="10" x2="25" y2="52" stroke="#E8D852" stroke-width="1.5" opacity="0.8"/>
+          <line x1="50" y1="10" x2="35" y2="54" stroke="#E8D852" stroke-width="1.5" opacity="0.8"/>
+          <line x1="50" y1="10" x2="65" y2="54" stroke="#E8D852" stroke-width="1.5" opacity="0.8"/>
+          <line x1="50" y1="10" x2="75" y2="52" stroke="#E8D852" stroke-width="1.5" opacity="0.8"/>
+        </svg>
+      </a>
+    </div>
   </nav>
 
   <!-- Hero Section -->
@@ -36,10 +38,8 @@
     <div class="hero-content">
       <p class="greeting">Hi, my name is</p>
       <h1>Carson Brown.</h1>
-      <h2>I build things for the web.</h2>
       <p class="description">
-        I'm a software engineer specializing in building exceptional digital experiences. 
-        Currently focused on creating accessible, minimal web applications with vanilla technologies.
+        I'm a software engineer specializing in building and maintaining exceptional digital experiences. 
       </p>
       <a href="#projects" class="cta-button">View my work</a>
     </div>
@@ -51,9 +51,9 @@
     <div class="about-content">
       <div class="about-text">
         <p>
-          Hello! I'm Carson, a Software Engineer currently working on the payment team at Shop Monkey, 
-          where I build secure payment infrastructure processing transactions for thousands of mechanic shops. 
-          My journey in web development started in 2018, and I've been passionate about building 
+          Hello! I'm Carson, a Senior Full stack Software Engineer currently working on the engineering team at Fringe, 
+          where I am currently leading a backend software rewrite project porting the backend from Scala to Go. 
+          My journey in web development started in 2011, and I've been passionate about building 
           performant, user-centric applications ever since.
         </p>
         <p>
@@ -83,15 +83,18 @@
     </div>
   </section>
 
+  <!-- Contract Work Section -->
+  <section id="contract-work">
+    <h2 class="section-title">Contract Work</h2>
+    <p class="section-subtitle">Client projects delivered through <strong>CWB Software Solutions</strong></p>
+    <div class="contract-list"></div>
+  </section>
+
   <!-- Projects Section -->
   <section id="projects">
-    <h2 class="section-title">Things I've Built</h2>
-    
-    <!-- Projects are dynamically loaded from scripts/projects-data.js -->
-    <div class="project-list">
-      <!-- Projects will be inserted here by projects-render.js -->
-    </div>
-
+    <h2 class="section-title">Projects</h2>
+    <p class="section-subtitle">A selection of personal projects built to explore new technologies, solve everyday problems, or just for fun.</p>
+    <div class="project-list"></div>
     <div class="all-projects-link">
       <a href="/archive.html">View Full Project Archive</a>
     </div>
@@ -102,9 +105,9 @@
     <h2 class="section-title">Get In Touch</h2>
     <div class="contact-content">
       <p>
-        While I'm not currently looking for new opportunities, I'm always happy to connect! 
-        Feel free to reach out on LinkedIn if you want to chat about technology, collaborate on projects, 
-        or just say hi.
+        I'm not currently looking for full-time positions, but I'm always open to contract work
+        through <strong>CWB Software Solutions</strong>. Feel free to reach out on LinkedIn if you
+        want to chat about technology, collaborate on a project, or just say hi.
       </p>
       <a href="https://www.linkedin.com/in/carwbrown/" class="cta-button" target="_blank">Connect on LinkedIn</a>
     </div>
@@ -128,6 +131,22 @@
     </div>
     <p class="footer-text">Designed & Built by Carson Brown</p>
   </footer>
+
+  <!-- Nav toggle -->
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    navToggle.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', false);
+      });
+    });
+  </script>
 
   <!-- Scripts -->
   <script src="scripts/projects-data.js"></script>
