@@ -20,43 +20,11 @@ const EXPERIENCE_DATA = [
     current: true
   },
   {
-    id: 'shop-monkey',
-    company: 'Shopmonkey',
-    position: 'Software Engineer',
-    startDate: 'May 2025',
-    endDate: 'Nov 2025',
-    description: [
-      'Working on the payment processing team, building secure payment infrastructure',
-      'Processing transactions for thousands of mechanic shops across the platform',
-      'Developing features using modern TypeScript and Next.js stack'
-    ],
-    technologies: ['TypeScript', 'Next.js', 'Payment Processing', 'AWS'],
-    companyUrl: 'https://www.shopmonkey.io/',
-    current: false
-  },
-  {
-    id: 'epic-hire',
-    company: 'Epic Hire',
-    position: 'Lead Software Engineer',
-    startDate: 'May 2024',
-    endDate: 'Apr 2025',
-    description: [
-      'Launched main web application (app.epichire.com) and marketing site using GraphQL, WordPress, and Next.js',
-      'Led MongoDB to PostgreSQL migration, architecting new data structure and relations, resulting in reduced bugs and more stable API',
-      'Released real-time messaging, event management with QR check-in, and announcement features for student organizations',
-      'Raised active unique monthly users 2x in two months through enhanced engagement features',
-      'Mentored several interns from first PR to productive team members, with three advancing to junior developer roles'
-    ],
-    technologies: ['React', 'Next.js', 'TypeScript', 'Java', 'PostgreSQL', 'MongoDB', 'GraphQL'],
-    companyUrl: 'https://epichire.com',
-    current: false
-  },
-  {
     id: 'fringe',
     company: 'Fringe',
     position: 'Senior Full Stack Engineer',
     startDate: 'Dec 2021',
-    endDate: 'May 2024',
+    endDate: 'Nov 2025',
     description: [
       'Optimized mission-critical endpoints using Redis cache, cutting response time from 5 seconds to 0.5 seconds',
       'Launched administration functionality with data visualization to educate admin users on platform usage',
@@ -70,29 +38,15 @@ const EXPERIENCE_DATA = [
     id: 'ifit-lead',
     company: 'iFIT',
     position: 'Engineering Lead',
-    startDate: 'Jul 2021',
+    startDate: 'Aug 2020',
     endDate: 'Dec 2021',
     description: [
-      'Led a team of Software Engineers (position affected by company-wide reduction in force)',
+      'Led a team of Software Engineers on the iFIT web platform serving millions of active users (position affected by company-wide reduction in force)',
       'Significantly cut load times for 6.5 million active users through caching strategies and API redesign',
       'Increased customer engagement with workout programs through new tracking and statistics features',
       'Provided stability for live workouts when tens of thousands of users landed simultaneously'
     ],
     technologies: ['TypeScript', 'React', 'JavaScript', 'Serverless Framework', 'Leadership'],
-    companyUrl: 'https://www.ifit.com/',
-    current: false
-  },
-  {
-    id: 'ifit-senior',
-    company: 'iFIT',
-    position: 'Senior Full Stack Developer',
-    startDate: 'Aug 2020',
-    endDate: 'Jul 2021',
-    description: [
-      'Promoted to Engineering Lead July 2021',
-      'Full-stack development on iFIT web platform serving millions of active users'
-    ],
-    technologies: ['TypeScript', 'React', 'JavaScript', 'Serverless Framework'],
     companyUrl: 'https://www.ifit.com/',
     current: false
   },

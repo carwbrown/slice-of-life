@@ -526,34 +526,46 @@ section {
 
 @media (max-width: 900px) {
   .experience-list::before {
-    left: 15px;
+    left: 7px;
   }
-  
+
   .experience-item {
     grid-template-columns: 1fr;
     gap: 0;
   }
-  
+
   .experience-timeline {
     text-align: left;
     padding-right: 0;
-    padding-left: 3rem;
-    padding-bottom: 1rem;
+    padding-left: 2.25rem;
+    padding-bottom: 0.75rem;
   }
-  
+
   .timeline-marker {
-    left: -8px;
+    left: 0;
     right: auto;
+    top: 4px;
   }
-  
+
+  .timeline-date .current-role {
+    display: inline;
+    margin-top: 0;
+    margin-left: 0.4ch;
+  }
+
   .experience-content {
-    padding: 1.75rem 2rem;
+    margin-left: 2.25rem;
+    padding: 1.75rem 1.75rem;
   }
-  
+
+  .experience-item:hover .experience-content {
+    transform: none;
+  }
+
   .experience-position {
     font-size: 1.25rem;
   }
-  
+
   .experience-company {
     font-size: 1rem;
   }
@@ -651,6 +663,69 @@ section {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--text-secondary);
+}
+
+/* Build Fast callout */
+.build-fast {
+  margin-bottom: 3rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.06), rgba(17, 34, 64, 0.4));
+  position: relative;
+  overflow: hidden;
+}
+
+.build-fast::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+}
+
+.build-fast-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.8;
+  margin-bottom: 0.75rem;
+}
+
+.build-fast h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.build-fast-lead {
+  max-width: 680px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.build-fast-lead strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.build-fast > p:last-of-type {
+  max-width: 680px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.build-fast .cta-button {
+  margin-top: 1.5rem;
 }
 
 /* Projects Section */
@@ -763,6 +838,16 @@ section {
 
 .contact-content p {
   margin-bottom: 3rem;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact-actions .cta-button {
+  margin-top: 0;
 }
 
 /* Footer */

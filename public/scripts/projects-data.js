@@ -41,10 +41,10 @@ const PROJECTS_DATA = [
     description: 'A comprehensive production scheduling and crew management SaaS platform built for the video production industry. Features real-time collaboration for production teams, drag-and-drop scheduling, automated call sheets, crew availability tracking, and location management. Built on AWS Amplify with GraphQL API, DynamoDB for scalable data storage, and Cognito for secure authentication. Serves production companies managing complex multi-day shoots with distributed teams.',
     technologies: ['React', 'AWS Amplify', 'GraphQL', 'DynamoDB', 'Cognito'],
     githubUrl: null,
-    liveUrl: 'https://calltime.io',
+    liveUrl: null,
     year: 2021,
     category: 'SaaS Application',
-    featured: true
+    featured: false
   },
   {
     id: 'math-facts',
@@ -148,24 +148,35 @@ const PROJECTS_DATA = [
   {
     id: 'master-chef',
     title: 'Master Chef',
-    description: 'Recipe management and cooking application. (Work in progress)',
-    technologies: ['CSS', 'JavaScript'],
+    description: 'A home and family hub that keeps a household running in one place—recipes, a weekly meal-and-activity planner, a shared grocery list, and family to-dos. Save recipes from around the web, plan the week at a glance, and sync everyone\'s schedules so the whole family stays on the same page. Built with vanilla HTML, CSS, and Web Components—no framework, no build step—on a PocketBase backend, deployed to Netlify with Google Calendar sync via serverless functions.',
+    technologies: ['HTML/CSS', 'JavaScript', 'Web Components', 'PocketBase', 'Netlify'],
     githubUrl: 'https://github.com/carwbrown/master-chef',
-    liveUrl: null,
+    liveUrl: 'https://mcc-recipe.netlify.app',
     year: 2026,
     category: 'Side Project',
-    featured: false
+    featured: true
   },
   {
     id: 'movie-fone',
     title: 'Movie Fone',
-    description: 'Movie discovery and tracking application. (Work in progress)',
-    technologies: ['JavaScript'],
+    description: 'A minimal movie-tracking app for searching films, building a watchlist, and keeping track of what you\'ve seen. Pulls data from TMDB and caches it locally for fast browsing. Built with vanilla HTML, CSS, and Web Components on a PocketBase backend, deployed to Netlify.',
+    technologies: ['HTML/CSS', 'JavaScript', 'Web Components', 'PocketBase', 'TMDB API'],
     githubUrl: 'https://github.com/carwbrown/movie-fone',
-    liveUrl: null,
+    liveUrl: 'https://movie-fone.netlify.app',
     year: 2026,
     category: 'Side Project',
-    featured: false
+    featured: true
+  },
+  {
+    id: 'rec-lineups',
+    title: 'Recreation Lineups',
+    description: 'A progressive web app that helps youth and rec-league coaches build game lineups and guarantee equal playing time across the roster. Tracks minutes per player, rotates positions, and runs from a phone on the sideline. Built with Next.js and TypeScript on Supabase (PostgreSQL + Auth), styled with Tailwind and DaisyUI, deployed to Netlify.',
+    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS', 'PWA'],
+    githubUrl: 'https://github.com/carwbrown/rec-lineups',
+    liveUrl: 'https://rec-lineups.netlify.app',
+    year: 2026,
+    category: 'Side Project',
+    featured: true
   }
 ];
 
